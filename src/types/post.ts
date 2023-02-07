@@ -18,4 +18,5 @@ export type PostObject = {
   category: CategoryObject;
   isMainPost: boolean;
   replies: number;
+  external_tags: number[];
 };

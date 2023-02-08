@@ -20,6 +20,24 @@ const topics = require("../topics");
 const categories = require("../categories");
 const groups = require("../groups");
 const utils = require("../utils");
+function getTags(content) {
+    const taglist = [];
+    let tempnum = 0;
+    for (let i = 0; i < content.length; i++) {
+        // found @ tag
+        if (content.charAt(i) === '@') {
+            let j = i + 1;
+            // find length of tag number
+            while (content.charAt(j) !== '@') {
+                j += 1;
+            }
+            // parse tag # to integer type
+            tempnum = Number(content.substring(i, j));
+        }
+        taglist.push(tempnum);
+    }
+    return taglist;
+}
 module.exports = function (Posts) {
     Posts.create = function (data) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -29,6 +47,7 @@ module.exports = function (Posts) {
             const content = data.content.toString();
             const timestamp = data.timestamp || Date.now();
             const isMain = data.isMain || false;
+            const tags = getTags(content);
             if (!uid && parseInt(uid, 10) !== 0) {
                 throw new Error('[[error:invalid-uid]]');
             }
@@ -44,6 +63,7 @@ module.exports = function (Posts) {
                 tid: tid,
                 content: content,
                 timestamp: timestamp,
+                external_tags: tags,
             };
             if (data.toPid) {
                 postData.toPid = data.toPid;

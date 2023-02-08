@@ -40,7 +40,8 @@ type Result = {
 function getTags(content: string): number[] {
     const taglist: number[] = [];
     let tempnum = 0;
-    for (let i = 0; i < content.length; i++) {
+    let i = 0;
+    while (i < content.length) {
         // found $ tag
         if (content.charAt(i) === '$') {
             let j = i + 1;
@@ -48,15 +49,17 @@ function getTags(content: string): number[] {
             while (j < content.length && content.charAt(j) !== '$') {
                 j = j + 1;
             }
-            // tag didn't end with an $ symbol
+            // tag didn't end with an $ symbol or tag was $$ (no reference #)
             if (content.charAt(j) != '$' || j - i < 2) { 
                 throw new Error('[[error:invalid-tag-format]]');
             }
             // parse tag # to integer type
-            tempnum = Number(content.substring(i, j));
+            tempnum = Number(content.substring(i+1, j));
             // Add to array of tags
             taglist.push(tempnum);
+            i = j;
         }
+        i = i + 1;
     }
     return taglist;
 }

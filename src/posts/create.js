@@ -24,17 +24,22 @@ function getTags(content) {
     const taglist = [];
     let tempnum = 0;
     for (let i = 0; i < content.length; i++) {
-        // found @ tag
-        if (content.charAt(i) === '@') {
+        // found $ tag
+        if (content.charAt(i) === '$') {
             let j = i + 1;
             // find length of tag number
-            while (content.charAt(j) !== '@') {
-                j += 1;
+            while (j < content.length && content.charAt(j) !== '$') {
+                j = j + 1;
+            }
+            // tag didn't end with an $ symbol
+            if (content.charAt(j) != '$' || j - i < 2) {
+                throw new Error('[[error:invalid-tag-format]]');
             }
             // parse tag # to integer type
             tempnum = Number(content.substring(i, j));
+            // Add to array of tags
+            taglist.push(tempnum);
         }
-        taglist.push(tempnum);
     }
     return taglist;
 }

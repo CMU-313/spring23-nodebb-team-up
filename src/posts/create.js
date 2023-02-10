@@ -24,7 +24,6 @@ function getTags(content) {
     const taglist = [];
     let tempnum = 0;
     let i = 0;
-    // for (let i = 0; i < content.length; i++) {
     while (i < content.length) {
         // found $ tag
         if (content.charAt(i) === '$') {
@@ -35,9 +34,8 @@ function getTags(content) {
             }
             // tag didn't end with an $ symbol or tag was $$ (no reference #)
             if (content.charAt(j) != '$' || j - i < 2) {
-                throw new Error(`[[error:invalid-tag-format]] i: ${i} j: ${j} chars: ${content.charAt(i)}, ${content.charAt(j)}`);
+                throw new Error('[[error:invalid-tag-format]]');
             }
-            // throw new Error(`i: ${i} j: ${j} chars: ${content.charAt(i)}, ${content.charAt(j)}`)
             // parse tag # to integer type
             tempnum = Number(content.substring(i + 1, j));
             // Add to array of tags

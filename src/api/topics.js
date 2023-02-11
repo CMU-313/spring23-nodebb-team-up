@@ -152,3 +152,18 @@ topicsAPI.ignore = async function (caller, data) {
 topicsAPI.unfollow = async function (caller, data) {
     await topics.unfollow(data.tid, caller.uid);
 };
+
+topicsAPI.resolve = async function (caller, data) {
+    // this func is in helpers.js
+    // event code might not exist? socketHelpers.emitToUids(3#eventcode##, ...)
+    // check later
+    await doTopicAction('resolve', 'event:topic_resolved', caller, {
+        tids: data.tids,
+    });
+};
+
+topicsAPI.unlock = async function (caller, data) {
+    await doTopicAction('unresolved', 'event:topic_unresolved', caller, {
+        tids: data.tids,
+    });
+};

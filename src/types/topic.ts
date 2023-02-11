@@ -17,6 +17,8 @@ export type TopicObjectCoreProperties = {
   bookmark: number;
   unreplied: boolean;
   icons: string[];
+  // Adding resolve here
+  resolved: boolean;
 };
 
 export type TopicObjectOptionalProperties = {

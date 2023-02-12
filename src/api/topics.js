@@ -153,6 +153,7 @@ topicsAPI.unfollow = async function (caller, data) {
     await topics.unfollow(data.tid, caller.uid);
 };
 
+// API function resolve
 topicsAPI.resolve = async function (caller, data) {
     // this func is in helpers.js
     // event code might not exist? socketHelpers.emitToUids(3#eventcode##, ...)
@@ -162,8 +163,9 @@ topicsAPI.resolve = async function (caller, data) {
     });
 };
 
+// API function unresolve
 topicsAPI.unresolve = async function (caller, data) {
-    await doTopicAction('unresolved', 'event:topic_unresolved', caller, {
+    await doTopicAction('unresolve', 'event:topic_unresolved', caller, {
         tids: data.tids,
     });
 };

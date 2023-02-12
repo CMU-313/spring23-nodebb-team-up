@@ -9,6 +9,7 @@ const plugins = require('../plugins');
 // const db = require('../database');
 // const topics = require('.');
 
+// This file implements toggling of resolve status for a topic object
 module.exports = function (Topics) {
     const topicTools = {};
     Topics.tools = topicTools;

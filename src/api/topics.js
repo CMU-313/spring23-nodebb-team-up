@@ -162,7 +162,7 @@ topicsAPI.resolve = async function (caller, data) {
     });
 };
 
-topicsAPI.unlock = async function (caller, data) {
+topicsAPI.unresolve = async function (caller, data) {
     await doTopicAction('unresolved', 'event:topic_unresolved', caller, {
         tids: data.tids,
     });

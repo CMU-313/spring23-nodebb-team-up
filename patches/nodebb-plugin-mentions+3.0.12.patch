@@ -1,0 +1,15 @@
+diff --git a/node_modules/nodebb-plugin-mentions/library.js b/node_modules/nodebb-plugin-mentions/library.js
+index d81b581..beb1c63 100644
+--- a/node_modules/nodebb-plugin-mentions/library.js
++++ b/node_modules/nodebb-plugin-mentions/library.js
+@@ -405,6 +405,10 @@ SocketPlugins.mentions.listGroups = async function () {
+ 	return groups.filter(g => g && !noMentionGroups.includes(g)).map(g => validator.escape(String(g)));
+ };
+ 
++// SocketPlugins.mentions.postSearch = async (socket, data) => {
++// 	let { posts } = await api.
++// }
++
+ SocketPlugins.mentions.userSearch = async (socket, data) => {
+ 	// Search by username
+ 	let { users } = await api.users.search(socket, data);

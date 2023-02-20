@@ -24,16 +24,17 @@ function getTags(content) {
     const taglist = [];
     let tempnum = 0;
     let i = 0;
+    const wrapper = '$';
     while (i < content.length) {
         // found $ tag
-        if (content.charAt(i) === '$') {
+        if (content.charAt(i) === wrapper) {
             let j = i + 1;
             // find length of tag number
-            while (j < content.length && content.charAt(j) !== '$') {
+            while (j < content.length && content.charAt(j) !== wrapper) {
                 j = j + 1;
             }
             // tag didn't end with an $ symbol or tag was $$ (no reference #)
-            if (content.charAt(j) != '$' || j - i < 2) {
+            if (content.charAt(j) != wrapper || j - i < 2) {
                 throw new Error('[[error:invalid-tag-format]]');
             }
             // parse tag # to integer type

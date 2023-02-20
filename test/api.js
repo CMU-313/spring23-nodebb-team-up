@@ -580,7 +580,7 @@ describe('API', async () => {
             }
         });
 
-        console.log('schema', schema);
+        // console.log('schema', schema);
         // Compare the response to the schema
         Object.keys(response).forEach((prop) => {
             if (additionalProperties) { // All bets are off

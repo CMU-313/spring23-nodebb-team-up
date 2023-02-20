@@ -140,3 +140,5 @@ PostObject:
       type: boolean
     replies:
       type: number
+    external_tags: 
+      type: []

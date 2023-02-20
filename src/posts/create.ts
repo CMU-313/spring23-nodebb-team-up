@@ -25,7 +25,7 @@ export type PostObject = {
     handle?: number;
     cid?: number;
     uploads?: any;
-    external_tags?: number[];
+    external_tags: number[];
   };
 
 type TopicObject = {

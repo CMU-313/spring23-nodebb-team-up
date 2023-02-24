@@ -73,13 +73,5 @@
 		"iconClass": "fa-briefcase",
 		"textClass": "visible-xs-inline",
 		"text": "Career"
-	},
-	{
-		"route": "{config.relative_path}/user/{userslug}/bookmarks",
-		"title": "Bookmarks",
-		"enabled": true,
-		"iconClass": "fa-heart",
-		"textClass": "visible-xs-inline",
-		"text": "Bookmark"
 	}
 ]

@@ -1,12 +1,36 @@
-diff --git a/node_modules/nodebb-plugin-mentions/static/autofill.js b/node_modules/nodebb-plugin-mentions/static/autofill.js
-index 7587087..1248da4 100644
---- a/node_modules/nodebb-plugin-mentions/static/autofill.js
-+++ b/node_modules/nodebb-plugin-mentions/static/autofill.js
-@@ -14,6 +14,7 @@ $(document).ready(function () {
+diff --git a/node_modules/nodebb-plugin-mentions/test/regex.js b/node_modules/nodebb-plugin-mentions/test/regex.js
+index 50de857..3ea3f40 100644
+--- a/node_modules/nodebb-plugin-mentions/test/regex.js
++++ b/node_modules/nodebb-plugin-mentions/test/regex.js
+@@ -11,6 +11,26 @@ const db = require.main.require('./test/mocks/databasemock');
+ // use core slugify module
+ const slugify = require.main.require('./src/slugify');
  
- 		let slugify;
- 		const strategy = {
-+			// match variable regex defines what triggers the autocomplete
- 			match: /\B@([^\s\n]*)?$/,
- 			search: function (term, callback) {
- 				require(['composer', 'helpers', 'slugify'], function (composer, helpers, _slugify) {
++// Tests for tagging posts functionality
++describe('post_regex', function () {
++	const matcher2 = new RegExp(regex);
++	const strings2 = [
++		'$001',
++		'$001 some text',
++		'some text $001',
++		'end of sentence. $001',
++		'$001.',
++		'$001\'s some text',
++	]
++	it('should match a post tag in all strings', () => {
++		strings2.forEach(string => {
++			const matches2 = string.match(matcher2);
++			assert(matches2);
++			assert.equal(slugify(matches2[0]), '001');
++		});
++	});
++});
++
+ describe('regex', function () {
+ 	const matcher = new RegExp(regex);
+ 	const strings = [
+@@ -144,3 +164,4 @@ describe('splitter', function () {
+ 		});
+ 	});
+ });
++

@@ -1,21 +1,20 @@
 'use strict';
 
-var async = require('async');
-var Topics = require.main.require('./src/topics');
+const Topics = require.main.require('./src/topics');
 
-var Plugin = {sortByBookmarks :
-    function(result, next) {
-        var tids = result.topics.map(function(topic) {
+const Plugin = {
+    sortByBookmarks: function (result, next) {
+        const tids = result.topics.map(function (topic) {
             return topic.tid;
         });
         Topics.getTopicsByTids(tids, next);
-        },
-        function(topics, next) {
-        topics.sort(function(a, b) {
+    },
+    function(topics, next) {
+        topics.sort(function (a, b) {
             return b.bookmarks - a.bookmarks;
         });
-        next(null, {topics: topics});
-    }
+        next(null, { topics: topics });
+    },
 };
 
 module.exports = Plugin;

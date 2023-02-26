@@ -3,11 +3,10 @@
     "version": "0.1.0",
     "description": "Sort topics by bookmark count.",
     "author": "Amita Goyal",
+    "main": "index.js",
     "license": "MIT",
-    "dependencies": {
-      "async": "^3.2.0"
-    },
-    "nodebb": {
-      "compatibility": "^1.17.0"
+    "dependencies": {},
+    "nbbpm": {
+        "compatibility": "^2.4.0"
     }
   }

@@ -1,15 +1,36 @@
-diff --git a/node_modules/nodebb-plugin-mentions/library.js b/node_modules/nodebb-plugin-mentions/library.js
-index d81b581..beb1c63 100644
---- a/node_modules/nodebb-plugin-mentions/library.js
-+++ b/node_modules/nodebb-plugin-mentions/library.js
-@@ -405,6 +405,10 @@ SocketPlugins.mentions.listGroups = async function () {
- 	return groups.filter(g => g && !noMentionGroups.includes(g)).map(g => validator.escape(String(g)));
- };
+diff --git a/node_modules/nodebb-plugin-mentions/test/regex.js b/node_modules/nodebb-plugin-mentions/test/regex.js
+index 50de857..3ea3f40 100644
+--- a/node_modules/nodebb-plugin-mentions/test/regex.js
++++ b/node_modules/nodebb-plugin-mentions/test/regex.js
+@@ -11,6 +11,26 @@ const db = require.main.require('./test/mocks/databasemock');
+ // use core slugify module
+ const slugify = require.main.require('./src/slugify');
  
-+// SocketPlugins.mentions.postSearch = async (socket, data) => {
-+// 	let { posts } = await api.
-+// }
++// Tests for tagging posts functionality
++describe('post_regex', function () {
++	const matcher2 = new RegExp(regex);
++	const strings2 = [
++		'$001',
++		'$001 some text',
++		'some text $001',
++		'end of sentence. $001',
++		'$001.',
++		'$001\'s some text',
++	]
++	it('should match a post tag in all strings', () => {
++		strings2.forEach(string => {
++			const matches2 = string.match(matcher2);
++			assert(matches2);
++			assert.equal(slugify(matches2[0]), '001');
++		});
++	});
++});
 +
- SocketPlugins.mentions.userSearch = async (socket, data) => {
- 	// Search by username
- 	let { users } = await api.users.search(socket, data);
+ describe('regex', function () {
+ 	const matcher = new RegExp(regex);
+ 	const strings = [
+@@ -144,3 +164,4 @@ describe('splitter', function () {
+ 		});
+ 	});
+ });
++

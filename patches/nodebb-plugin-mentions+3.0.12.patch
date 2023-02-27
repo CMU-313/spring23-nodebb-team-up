@@ -1,12 +1,31 @@
 diff --git a/node_modules/nodebb-plugin-mentions/static/autofill.js b/node_modules/nodebb-plugin-mentions/static/autofill.js
-index 7587087..1248da4 100644
+index 7587087..4c5a040 100644
 --- a/node_modules/nodebb-plugin-mentions/static/autofill.js
 +++ b/node_modules/nodebb-plugin-mentions/static/autofill.js
-@@ -14,6 +14,7 @@ $(document).ready(function () {
+@@ -61,7 +61,26 @@ $(document).ready(function () {
+ 			cache: true,
+ 		};
  
- 		let slugify;
- 		const strategy = {
-+			// match variable regex defines what triggers the autocomplete
- 			match: /\B@([^\s\n]*)?$/,
- 			search: function (term, callback) {
- 				require(['composer', 'helpers', 'slugify'], function (composer, helpers, _slugify) {
++		const strat2 = {
++			match: /\B\$([\d]*)?$/,
++			search: function (term, callback) {
++				require(['composer', 'helpers', 'slugify'], function (composer, helpers, _slugify) { 
++					slugify = _slugify;
++					return callback([]);
++				}); 
++			},
++			index: 2,
++			replace: function (mention) {
++				// mention = $('<div/>').html(mention);
++				const num = mention.match(/\d+/)[1];
++				return '<a href="/pid/' + num + '"> ' + mention + '</a>';
++			},
++			cache: true,
++		};
++
+ 		data.strategies.push(strategy);
++		
++		data.strategies.push(strat2);
+ 	});
+ 
+ 	$(window).on('action:composer.loaded', function (ev, data) {

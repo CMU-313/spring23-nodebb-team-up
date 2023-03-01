@@ -18,7 +18,7 @@ describe(' test Plugin', function () {
             { tid: 3, bookmarks: 2 },
             ],
         };
-        Topics.getTopicData = async function () {
+        Topics.getTopicDataByTids = async function (tids, uid) {
             return results;
         };
 

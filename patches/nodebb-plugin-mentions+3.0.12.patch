@@ -15,7 +15,7 @@ index d81b581..05114a9 100644
 +};
 +
 diff --git a/node_modules/nodebb-plugin-mentions/static/autofill.js b/node_modules/nodebb-plugin-mentions/static/autofill.js
-index 7587087..43ecda8 100644
+index 7587087..89ae9d0 100644
 --- a/node_modules/nodebb-plugin-mentions/static/autofill.js
 +++ b/node_modules/nodebb-plugin-mentions/static/autofill.js
 @@ -17,6 +17,7 @@ $(document).ready(function () {
@@ -84,14 +84,14 @@ index 7587087..43ecda8 100644
 +					// const suggestion = '<a href="/pid/' + term + '"> $' + term + '</a>'; // create suggestion with link to post
 +					const suggestion = `pid: ${term}`;
 +					mentions.push(suggestion);
-+					console.log(mentions);
++					// console.log(mentions);
 +					return callback(mentions);
 +				}); 
 +			},
 +			index: 1,
 +			replace: function (mention) {
-+				console.log("strat2 replace called! ");
-+				console.log(mention);
++				// console.log("strat2 replace called! ");
++				// console.log(mention);
 +				// mention = $('<div/>').html(mention);
 +				// return '$' + slugify(mention, true) + ' ';
 +				// const num = mention.match(/\d+/)[1];
@@ -124,3 +124,35 @@ index 7587087..43ecda8 100644
  	function loadTopicUsers(element) {
  		require(['composer', 'alerts'], function (composer, alerts) {
  			const composerEl = element.parents('.composer').get(0);
+diff --git a/node_modules/nodebb-plugin-mentions/test/regex.js b/node_modules/nodebb-plugin-mentions/test/regex.js
+index 50de857..8654052 100644
+--- a/node_modules/nodebb-plugin-mentions/test/regex.js
++++ b/node_modules/nodebb-plugin-mentions/test/regex.js
+@@ -11,6 +11,27 @@ const db = require.main.require('./test/mocks/databasemock');
+ // use core slugify module
+ const slugify = require.main.require('./src/slugify');
+ 
++// Tests for tagging posts functionality
++describe('post_regex', function () {
++	const matcher2 = new RegExp(regex);
++	const strings2 = [
++		'$001',
++		'$001 some text',
++		'some text $001',
++		'end of sentence. $001',
++		'$001.',
++		'$001\'s some text',
++	]
++	it('should match a post tag in all strings', () => {
++		strings2.forEach(string => {
++			const matches2 = string.match(matcher2);
++			assert(matches2);
++			assert.equal(slugify(matches2[0]), '001');
++		});
++	});
++});
++
++
+ describe('regex', function () {
+ 	const matcher = new RegExp(regex);
+ 	const strings = [

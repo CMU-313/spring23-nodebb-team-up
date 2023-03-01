@@ -1,5 +1,5 @@
 diff --git a/node_modules/nodebb-plugin-mentions/test/regex.js b/node_modules/nodebb-plugin-mentions/test/regex.js
-index 50de857..3ea3f40 100644
+index 50de857..c752a94 100644
 --- a/node_modules/nodebb-plugin-mentions/test/regex.js
 +++ b/node_modules/nodebb-plugin-mentions/test/regex.js
 @@ -11,6 +11,26 @@ const db = require.main.require('./test/mocks/databasemock');
@@ -10,12 +10,12 @@ index 50de857..3ea3f40 100644
 +describe('post_regex', function () {
 +	const matcher2 = new RegExp(regex);
 +	const strings2 = [
-+		'$001',
-+		'$001 some text',
-+		'some text $001',
-+		'end of sentence. $001',
-+		'$001.',
-+		'$001\'s some text',
++		'#001',
++		'#001 some text',
++		'some text #001',
++		'end of sentence. #001',
++		'#001.',
++		'#001\'s some text',
 +	]
 +	it('should match a post tag in all strings', () => {
 +		strings2.forEach(string => {

@@ -3,7 +3,6 @@
 const assert = require('assert');
 const Plugin = require('../index');
 const Topics = require('../../../src/topics');
-const bookmarks = require('../../../src/bookmarks');
 
 describe(' test Plugin', function () {
     describe('Plugin.displaySortedTopics', function () {

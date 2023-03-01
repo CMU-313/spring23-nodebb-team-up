@@ -8,7 +8,11 @@ const Topics = require('../../../src/topics');
 describe(' test Plugin', function () {
 // eslint-disable-next-line
     describe('Plugin.displaySortedTopics', function () {
-
+        // eslint-disable-next-line
+        it('should return empty results if data is not provided', async function () {
+            const result = await Plugin.displaySortedTopics({});
+            assert.strictEqual(result.results.length, 0);
+        });
         // create sample TopicData output to test sort method
         const req = {
             data: { tids: [1, 2, 3] },

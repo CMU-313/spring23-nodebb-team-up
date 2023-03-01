@@ -6,6 +6,7 @@ const Topics = require('../../../src/topics');
 
 describe(' test Plugin', function () {
     describe('Plugin.displaySortedTopics', function () {
+
         //create sample TopicData output to test sort method 
         const req = {
             data: {tids: [1, 2, 3]},
@@ -22,15 +23,14 @@ describe(' test Plugin', function () {
             return results;
         };
 
-  
-      it('should sort topics by the number of bookmarks', async function () {
-          const data = await Plugin.displaySortedTopics({req});
-          assert.equal(data.results, results);
-          assert.equal(data.results.topics, [
+        it('should sort topics by the number of bookmarks', async function () {
+            const data = await Plugin.displaySortedTopics({req});
+            assert.equal(data.results, results);
+            assert.equal(data.results.topics, [
             { tid: 1, bookmarkCount: 3 },
             { tid: 3, bookmarkCount: 2 },
             { tid: 2, bookmarkCount: 1 },
-          ]);
+            ]);
         });
     });
   });

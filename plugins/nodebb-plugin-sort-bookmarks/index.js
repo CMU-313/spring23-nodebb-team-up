@@ -1,7 +1,7 @@
 'use strict';
 
 // Referenced NodeJS documentation from https://nodejs.org/api/modules.html#requiremain
-const Topics = module.children.require('./src/topics');
+const Topics = require('../../src/topics');
 
 const sort = async function (req) {
     Topics.getTopicDataByTids(req.data.tids, req.uid);

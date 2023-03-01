@@ -4,7 +4,7 @@
 const Topics = require('../../src/topics');
 
 const sort = async function (req) {
-    Topics.getTopicDataByTids(req.data.tids, req.uid);
+    const topicsList = await Topics.getTopicDataByTids(req.data.tids, req.uid);
     topicsList.sort((a, b) => b.bookmarks - a.bookmarks);
     return topicsList;
 };

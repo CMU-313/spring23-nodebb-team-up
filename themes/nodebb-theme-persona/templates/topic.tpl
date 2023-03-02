@@ -16,7 +16,7 @@
                         {{{each icons}}}{@value}{{{end}}}
                     </span>
                     <span component="topic/title">{title}</span>
-                </span>
+                </span> 
             </h1>
 
             <div class="topic-info clearfix">

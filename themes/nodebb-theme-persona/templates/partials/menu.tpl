@@ -233,29 +233,128 @@
                 </ul>
 
                 <ul id="main-nav" class="nav navbar-nav">
-                    {{{each navigation}}}
-                    <!-- IF function.displayMenuItem, @index -->
-                    <li class="{navigation.class}{{{ if navigation.dropdown }}} dropdown{{{ end }}}">
-                        <a title="{navigation.title}" class="navigation-link {{{ if navigation.dropdown }}}dropdown-toggle{{{ end }}}"
-                        {{{ if navigation.dropdown }}} href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {{{ else }}} href="{navigation.route}"{{{ end }}} {{{ if navigation.id }}}id="{navigation.id}"{{{ end }}}{{{ if navigation.targetBlank }}} target="_blank"{{{ end }}}>
-                            {{{ if navigation.iconClass }}}
-                            <i class="fa fa-fw {navigation.iconClass}" data-content="{navigation.content}"></i>
-                            {{{ end }}}
-                            {{{ if navigation.text }}}
-                            <span class="{navigation.textClass}">{navigation.text}</span>
-                            {{{ end }}}
-                            {{{ if navigation.dropdown}}}
-                            <i class="fa fa-caret-down"></i>
-                            {{{ end }}}
+                    <li>
+                        <a href="#" id="reconnect" class="hide" title="[[global:reconnecting-message, {config.siteTitle}]]">
+                            <i class="fa fa-check"></i>
                         </a>
-                        {{{ if navigation.dropdown }}}
-                        <ul class="dropdown-menu">
-                            {navigation.dropdownContent}
-                        </ul>
-                        {{{ end }}}
                     </li>
-                    <!-- ENDIF function.displayMenuItem -->
-                    {{{end}}}
+                    </ul>
+
+                <ul id="main-nav" class="nav navbar-nav">
+                    <li class="">
+                        <a title="Categories" class="navigation-link " href="/categories">
+
+                            <i class="fa fa-fw fa-list" data-content=""></i>
+
+
+                            <span class="visible-xs-inline">Categories</span>
+
+
+                        </a>
+
+                    </li>
+
+                    <li class="">
+                        <a title="Unread" class="navigation-link " href="/unread" id="unread-count">
+
+                            <i class="fa fa-fw fa-inbox" data-content="0"></i>
+
+
+                            <span class="visible-xs-inline">Unread</span>
+
+
+                        </a>
+
+                    </li>
+
+                    <li class="">
+                        <a title="Recent" class="navigation-link " href="/recent">
+
+                            <i class="fa fa-fw fa-clock-o" data-content=""></i>
+
+
+                            <span class="visible-xs-inline">Recent</span>
+
+
+                        </a>
+
+                    </li>
+
+                    <li class="">
+                        <a title="Tags" class="navigation-link " href="/tags">
+
+                            <i class="fa fa-fw fa-tags" data-content=""></i>
+
+
+                            <span class="visible-xs-inline">Tags</span>
+
+
+                        </a>
+
+                    </li>
+
+                    <li class="">
+                        <a title="Popular" class="navigation-link " href="/popular">
+
+                            <i class="fa fa-fw fa-fire" data-content=""></i>
+
+
+                            <span class="visible-xs-inline">Popular</span>
+
+
+                        </a>
+
+                    </li>
+
+                    <li class="">
+                        <a title="Users" class="navigation-link " href="/users">
+
+                            <i class="fa fa-fw fa-user" data-content=""></i>
+
+
+                            <span class="visible-xs-inline">Users</span>
+
+
+                        </a>
+
+                    </li>
+
+                    <li class="">
+                        <a title="Groups" class="navigation-link " href="/groups">
+
+                            <i class="fa fa-fw fa-group" data-content=""></i>
+
+
+                            <span class="visible-xs-inline">Groups</span>
+
+
+                        </a>
+
+                    </li>
+                    <li class="active">
+                        <a title="Career" class="navigation-link " href="/career">
+
+                            <i class="fa fa-fw fa-suitcase" data-content=""></i>
+
+
+                            <span class="visible-xs-inline">Career</span>
+
+
+                        </a>
+
+                    </li>
+                    <li class="active">
+                        <a title="Bookmark" class="navigation-link " href="/{user.username}/bookmarks">
+
+                            <i class="fa fa-fw fa-heart" data-content=""></i>
+
+
+                            <span class="visible-xs-inline">Bookmark</span>
+
+
+                        </a>
+
+                    </li>
                 </ul>
 
                 <!-- ELSE -->

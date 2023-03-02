@@ -73,5 +73,13 @@
 		"iconClass": "fa-briefcase",
 		"textClass": "visible-xs-inline",
 		"text": "Career"
+	},
+	{
+		"route": "/{user.username}/bookmarks",
+		"title": "Bookmarks",
+		"enabled": true,
+		"iconClass": "fa-heart",
+		"textClass": "visible-xs-inline",
+		"text": "Bookmark"
 	}
 ]

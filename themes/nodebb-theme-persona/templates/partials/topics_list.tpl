@@ -38,6 +38,19 @@
                 <i component="topic/moved" class="fa fa-arrow-circle-right <!-- IF !topics.oldCid -->hide<!-- ENDIF !topics.oldCid -->" title="[[topic:moved]]"></i>
                 {{{each topics.icons}}}{@value}{{{end}}}
 
+                <!-- copied bookmark functionality to topic list -->
+                {{{ if config.loggedIn }}}
+                    <li>
+                        <a component="post/bookmark" role="menuitem" class ="pull-right" tabindex="-1" href="#" data-bookmarked="{posts.bookmarked}">
+                            <span class="menu-icon">
+                                <i component="post/bookmark/on" class="fa fa-fw fa-heart <!-- IF !posts.bookmarked -->hidden<!-- ENDIF !posts.bookmarked -->"></i>
+                                <i component="post/bookmark/off" class="fa fa-fw fa-heart-o <!-- IF posts.bookmarked -->hidden<!-- ENDIF posts.bookmarked -->"></i>
+                            </span>
+                            <span component="post/bookmark-count" class="bookmarkCount badge" data-bookmarks="{posts.bookmarks}">{posts.bookmarks}</span>&nbsp;
+                        </a>
+                    </li>
+                {{{ end }}}
+
 
                 <!-- IF !topics.noAnchor -->
                 <a href="{config.relative_path}/topic/{topics.slug}<!-- IF topics.bookmark -->/{topics.bookmark}<!-- ENDIF topics.bookmark -->">{topics.title}</a><br />

@@ -1,8 +1,19 @@
 diff --git a/node_modules/nodebb-plugin-mentions/library.js b/node_modules/nodebb-plugin-mentions/library.js
-index d81b581..05114a9 100644
+index d81b581..98ac406 100644
 --- a/node_modules/nodebb-plugin-mentions/library.js
 +++ b/node_modules/nodebb-plugin-mentions/library.js
-@@ -438,3 +438,11 @@ SocketPlugins.mentions.userSearch = async (socket, data) => {
+@@ -405,6 +405,10 @@ SocketPlugins.mentions.listGroups = async function () {
+ 	return groups.filter(g => g && !noMentionGroups.includes(g)).map(g => validator.escape(String(g)));
+ };
+ 
++// SocketPlugins.mentions.postSearch = async (socket, data) => {
++// 	let { posts } = await api.
++// }
++
+ SocketPlugins.mentions.userSearch = async (socket, data) => {
+ 	// Search by username
+ 	let { users } = await api.users.search(socket, data);
+@@ -438,3 +442,11 @@ SocketPlugins.mentions.userSearch = async (socket, data) => {
  	return users;
  };
  
@@ -14,8 +25,52 @@ index d81b581..05114a9 100644
 +	return posts;
 +};
 +
+diff --git a/node_modules/nodebb-plugin-mentions/static/admin.ts b/node_modules/nodebb-plugin-mentions/static/admin.ts
+new file mode 100644
+index 0000000..b431b13
+--- /dev/null
++++ b/node_modules/nodebb-plugin-mentions/static/admin.ts
+@@ -0,0 +1,37 @@
++'use strict';
++
++/* globals $, app, socket, define */
++
++define('admin/plugins/mentions', ['settings', 'alerts'], function (Settings, alerts) {
++
++	var ACP = {};
++
++	ACP.init = function () {
++		Settings.load('mentions', $('.mentions-settings'));
++
++		$(window).on('action:admin.settingsLoaded', applyDefaults);
++
++		$('#save').on('click', function () {
++			Settings.save('mentions', $('.mentions-settings'), function () {
++				alerts.alert({
++					type: 'success',
++					alert_id: 'mentions-saved',
++					title: 'Settings Saved',
++					message: 'Please reload your NodeBB to apply these settings',
++					clickfn: function () {
++						socket.emit('admin.reload');
++					}
++				});
++			});
++		});
++	};
++
++	function applyDefaults() {
++		if (!ajaxify.data.settings || !ajaxify.data.settings.hasOwnProperty('autofillGroups')) {
++			$('input#autofillGroups').parents('.mdl-switch').toggleClass('is-checked', false);
++			$('input#autofillGroups').prop('checked', false);
++		}
++	}
++
++	return ACP;
++});
+\ No newline at end of file
 diff --git a/node_modules/nodebb-plugin-mentions/static/autofill.js b/node_modules/nodebb-plugin-mentions/static/autofill.js
-index 7587087..89ae9d0 100644
+index 7587087..fa2e31c 100644
 --- a/node_modules/nodebb-plugin-mentions/static/autofill.js
 +++ b/node_modules/nodebb-plugin-mentions/static/autofill.js
 @@ -17,6 +17,7 @@ $(document).ready(function () {
@@ -45,7 +100,7 @@ index 7587087..89ae9d0 100644
 +				require(['composer', 'helpers', 'slugify'], function (composer, helpers, _slugify) { 
 +					// console.log("strat2 search called! ");
 +					// console.log(term);
-+					// return callback(["test"]);
++					// return callback(["	"]);
 +					slugify = _slugify;
 +					let mentions = [];
 +					if (!term) {

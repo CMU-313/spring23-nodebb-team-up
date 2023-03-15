@@ -10,6 +10,7 @@
     "public/src/**/*",
     "src/**/*", 
     "test/**/*",
+    "lib/sample-flow.ts",
   ],
   "exclude":[
     "node_modules",

@@ -1,4 +1,4 @@
-# fly.toml file generated for team-up-nodebb1 on 2023-03-13T19:08:20-04:00
+# fly.toml file generated for team-up-nodebb1 on 2023-03-14T21:04:28-04:00
 
 app = "team-up-nodebb1"
 kill_signal = "SIGINT"

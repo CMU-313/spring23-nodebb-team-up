@@ -1,7 +1,7 @@
 Here are the  corresponding branches to each feature, this information is also listed in our Project Board in the comments of the corresponding issues:
 
 1) Using Bookmark Sort Feature:
-      - make sure  "nodebb-plugin-sort-bookmarks": "0.1.0" is in the package.json file in the root directory and run npm install
+      - make sure          "nodebb-plugin-sort-bookmarks": "file:/plugins/nodebb-plugin-sort-bookmarks" is in the package.json file in the root directory and run npm install
       - run npm link
       - start instance of nodebb and go to admin panel
             - navigate to plugins and activate the nodebb-plugin-sort-bookmarks plugin

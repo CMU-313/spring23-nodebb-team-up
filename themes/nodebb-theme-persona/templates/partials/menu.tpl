@@ -344,7 +344,7 @@
 
                     </li>
                     <li class="active">
-                        <a title="Bookmark" class="navigation-link " href="{config.relative_path}/user/{userslug}/bookmarks">
+                        <a title="Bookmark" class="navigation-link " href="/user/alagit/bookmarks">
 
                             <i class="fa fa-fw fa-heart" data-content=""></i>
 

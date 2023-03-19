@@ -82,3 +82,9 @@ jobs:
 
       - name: Run complexity analysis
         run: npm run complexity
+
+      - name: Archive complexity report
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-complexity-report
+          path: complexity-report.md

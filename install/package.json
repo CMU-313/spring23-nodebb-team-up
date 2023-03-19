@@ -14,7 +14,8 @@
         "lint": "npx tsc && eslint --cache ./nodebb .",
         "test": "npx tsc && nyc --reporter=html --reporter=text-summary mocha",
         "coverage": "nyc report --reporter=text-lcov > ./coverage/lcov.info",
-        "coveralls": "nyc report --reporter=text-lcov | coveralls && rm -r coverage"
+        "coveralls": "nyc report --reporter=text-lcov | coveralls && rm -r coverage",
+        "complexity": "cr -e -f markdown -o 'complexity-report.md' -c . src/**/*.js"
     },
     "nyc": {
         "exclude": [
@@ -156,6 +157,7 @@
         "@types/semver": "^7.3.13",
         "@typescript-eslint/eslint-plugin": "^5.48.0",
         "@typescript-eslint/parser": "^5.48.0",
+        "complexity-report": "^2.0.0-alpha",
         "coveralls": "3.1.1",
         "eslint": "^8.31.0",
         "eslint-config-nodebb": "0.2.1",

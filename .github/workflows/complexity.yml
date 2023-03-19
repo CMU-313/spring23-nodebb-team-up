@@ -14,13 +14,13 @@ defaults:
     shell: bash
 
 permissions:
-  contents: [read, write]
+  contents: write
 
 jobs:
   cr:
     permissions:
       checks: write  # for coverallsapp/github-action to create new checks
-      contents: [read, write]  # for actions/checkout to fetch code
+      contents: write  # for actions/checkout to fetch code
     name: Complexity Report
     strategy:
       fail-fast: false

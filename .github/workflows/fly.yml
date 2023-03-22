@@ -47,7 +47,7 @@ jobs:
 
       - uses: superfly/flyctl-actions/setup-flyctl@master
 
-      - name: Redis setup
+      - name: Setup on Redis
         env:
           SETUP: >-
             {
@@ -71,11 +71,6 @@ jobs:
             }
         run: |
           node app --setup="${SETUP}" --ci="${CI}"
-      - name: Setup config
-        env:
-          DB_CONFIG: ${{ secrets.DB_CONFIG }}
-        run: |
-          echo ${DB_CONFIG} > install/db_config.json
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

@@ -12,9 +12,12 @@ COPY --chown=node:node install/package.json /usr/src/app/package.json
 USER node
 
 RUN npm install --only=prod && \
+    npm run postinstall && \
     npm cache clean --force
 
 COPY --chown=node:node . /usr/src/app
+
+RUN cp install/db_config.json config.json
 
 ENV NODE_ENV=production \
     daemon=false \
@@ -22,4 +25,4 @@ ENV NODE_ENV=production \
 
 EXPOSE 4567
 
-CMD test -n "${SETUP}" && ./nodebb setup && echo && echo && echo && echo 'redis' && echo && echo && echo && echo || node ./nodebb start
+CMD test -n "${SETUP}" && ./nodebb setup || node ./nodebb start

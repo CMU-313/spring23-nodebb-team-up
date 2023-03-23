@@ -13,7 +13,7 @@ connection.connect = async function (options) {
 
         let cxn;
         if (options.cluster) {
-            cxn = new Redis.Cluster(options.cluster, options.options);
+            cxn = new Redis.Cluster(options.cluster, { ...options.options, family: 6 });
         } else if (options.sentinels) {
             cxn = new Redis({
                 sentinels: options.sentinels,

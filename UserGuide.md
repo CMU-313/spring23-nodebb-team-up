@@ -1,7 +1,7 @@
 Here are the  corresponding branches to each feature, this information is also listed in our Project Board in the comments of the corresponding issues:
 
 1) Using Bookmark Sort Feature:
-      - make sure  "nodebb-plugin-sort-bookmarks": "0.1.0" is in the package.json file in the root directory and run npm install
+      - make sure          "nodebb-plugin-sort-bookmarks": "file:/plugins/nodebb-plugin-sort-bookmarks" is in the package.json file in the root directory and run npm install
       - run npm link
       - start instance of nodebb and go to admin panel
             - navigate to plugins and activate the nodebb-plugin-sort-bookmarks plugin
@@ -17,7 +17,12 @@ Here are the  corresponding branches to each feature, this information is also l
       In addition to this, we manually tested the plugin because we felt it would be more comprehensive and less-involved than automated tests for the plugin. For the scope of our implementation, we felt as though it was enough because the feature would not compromise the integrity of the remainder of the code base and we could visually tell if the plugin was active based on if the topics were sorted correctly on the web page.
 
 
-2) Using tag/post linking feature:
+2) Installing tag/post linking feature
+- setup nodebb as you would normally
+- Add the line "postinstall": "patch-package" to the "scripts" section in the package.json file in the main directory
+- run npm install
+
+Using tag/post linking feature:
       - dependency: "nodebb-plugin-mentions", which should be installed and activated by default
       - type $<pid> in the composer, where <pid> represents the id of the target post 
       - when a suggestion pops up, hit TAB to select the suggestion

@@ -16,10 +16,12 @@ RUN npm install --only=prod && \
 
 COPY --chown=node:node . /usr/src/app
 
+RUN cp install/db_config.json config.json
+
 ENV NODE_ENV=production \
     daemon=false \
     silent=false
 
 EXPOSE 4567
 
-CMD test -n "${SETUP}" && ./nodebb setup && echo && echo && echo && echo 'redis' && echo && echo && echo && echo || node ./nodebb start
+CMD test -n "${SETUP}" && ./nodebb setup || node ./nodebb start

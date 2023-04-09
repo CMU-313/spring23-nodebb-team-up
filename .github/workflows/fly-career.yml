@@ -1,7 +1,9 @@
 name: Deploy prediction model on Fly
 on:
   push:
-    branches: ["main", "career-model/dev"]
+    branches:
+      - main
+      - career-model/dev
 jobs:
   deploy:
     name: Deploy app

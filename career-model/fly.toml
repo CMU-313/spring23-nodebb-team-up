@@ -1,6 +1,6 @@
-# fly.toml file generated for career-model-ml on 2023-04-09T03:38:53-04:00
+# fly.toml file generated for ml-carrer-up on 2023-04-09T03:53:00-04:00
 
-app = "career-model-ml"
+app = "ml-carrer-up"
 kill_signal = "SIGINT"
 kill_timeout = 5
 primary_region = "iad"

@@ -1,0 +1,36 @@
+post:
+  tags:
+    - career
+  summary: Register Career Data 
+  description: Used to register a user's career data in the db
+  requestBody:
+    required: true
+    content: 
+      application/json:
+        schema:
+          type: object
+          properties:
+            student_id:
+              type: string
+            major: 
+              type: string
+            age: 
+              type: string
+            gender:
+              type: string
+            gpa: 
+              type: string
+            extra_curricular: 
+              type: string
+            num_programming_languages: 
+              type: string
+            num_past_internships:
+              type: string
+  responses:
+    '200':
+      description: User successfully registered
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: {}

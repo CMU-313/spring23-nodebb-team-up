@@ -1,4 +1,4 @@
-# fly.toml file generated for career-model-ml on 2023-04-09T03:06:44-04:00
+# fly.toml file generated for career-model-ml on 2023-04-09T03:38:53-04:00
 
 app = "career-model-ml"
 kill_signal = "SIGINT"
@@ -13,7 +13,7 @@ processes = []
 
 [[services]]
   http_checks = []
-  internal_port = 4000
+  internal_port = 8080
   processes = ["app"]
   protocol = "tcp"
   script_checks = []

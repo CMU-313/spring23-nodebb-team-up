@@ -1,16 +1,11 @@
-# Use an official Python runtime as a parent image
 FROM python:3.9
 
 WORKDIR /code
 
 COPY ./requirements.txt /code/requirements.txt
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-COPY . /code
+COPY ./predict-app /code/app
 
-EXPOSE 4000
-
-ENTRYPOINT [ "python" ]
-
-CMD ["prediction_service.py", "-p"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]

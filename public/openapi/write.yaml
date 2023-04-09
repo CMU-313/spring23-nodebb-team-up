@@ -45,6 +45,8 @@ tags:
     description: Administrative calls
   - name: files
     description: File upload routes
+  - name: career
+    description: Career feature routing
 paths:
   /ping:
     $ref: 'write/ping.yaml'
@@ -176,3 +178,5 @@ paths:
     $ref: 'write/files.yaml'
   /files/folder:
     $ref: 'write/files/folder.yaml'
+  /career/register:
+    $ref: 'write/career/register.yaml'

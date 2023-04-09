@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     depends_on:
       - db
+      - prediction
     expose:
       - 4567 # use a reverse proxy like Traefik
 
@@ -19,6 +20,12 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
       - mongo:/data/db
+    
+  prediction:
+    build: ./career-model/
+    restart: unless-stopped
+    expose: 
+      - 8080
 
 volumes:
   mongo:

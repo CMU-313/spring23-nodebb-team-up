@@ -1,34 +1,3 @@
-# Steven's instructions 
-
-## Setup python virtual environment 
-
-1. I am going to assume that you have Python3 installed
-
-2. Execute the following in terminal: 
-
-```{bash}
-python3 -m venv career-model/venv                   # make python virtual environment
-source career-model/venv/bin/activate               # activate virtual environment 
-pip install -r career-model/requirements.txt        # install python dependencies
-```
-
-3. Now, you can start the service using the following: 
-
-    - if you are testing, then use `% python career-model/prediction_service.py`.
-    - if you want to use in production `% python career-model/prediction_service.py --production` or `% python career-model/prediction_service.py -p` for short. 
-
-4. The following endpoints are available: 
-
-    - `127.0.0.1:4000`: a dummy "hello world!" endpoint 
-    - `127.0.0.1:4000/prediction`: endpoint handling POST request for making predictions; student info will be contained in request body
-    - `127.0.0.1:4000/docs`: UI for API documentation; you can also find schema for POST endpoint request body here 
-
-5. API response format: 
-
-    - If prediction goes smoothly, the status code returned will be 200, and response body JSON will be something like `{'good_employee': <0 or 1>}`; 
-    - If there is anything wrong with prediction process (mostly likely that request body is broken), then status code will be 400, and response JSON will contain information on `error_message` and `error_type`. They are both raw python outputs. 
-
-
 # Career Recruiter ML Model Framework
 
 ## Overview

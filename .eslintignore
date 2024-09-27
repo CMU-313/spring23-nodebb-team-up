@@ -28,3 +28,4 @@ test/files
 /public/src/client/account/header.js
 /public/src/client/test.js
 themes/
+lib/
